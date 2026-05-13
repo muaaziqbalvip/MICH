@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MICH Admin Panel | MICH PROJECT</title>
+  <meta name="robots" content="noindex, nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/admin.css"/>
+</head>
+<body class="admin-body">
+
+<!-- LOGIN PAGE -->
+<div id="adminLoginPage">
+  <div class="admin-login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH Logo"/>
+        <h2>MICH ADMIN</h2>
+        <p>Muslim Islam Org — Secure Access</p>
+      </div>
+      <form id="adminLoginForm">
+        <div class="form-group" style="margin-bottom:16px;">
+          <label>Email</label>
+          <input type="email" id="adminEmail" placeholder="admin@michproject.com" value="muaaz@michproject.com" required/>
+        </div>
+        <div class="form-group" style="margin-bottom:24px;">
+          <label>Password</label>
+          <input type="password" id="adminPass" placeholder="••••••••" required/>
+        </div>
+        <div id="loginError" style="display:none;color:var(--red);font-size:0.85rem;margin-bottom:16px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);padding:10px;border-radius:8px;"></div>
+        <button type="submit" class="btn-primary btn-full">
+          <i class="fas fa-sign-in-alt"></i> Login to Admin
+        </button>
+        <div style="margin-top:16px;text-align:center;">
+          <a href="index.html" style="color:var(--gray);font-size:0.85rem;text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to Website</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div id="adminDashboardPage" class="hidden">
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="Logo"/>
+        <div>
+          <div class="a-brand-name">MICH ADMIN</div>
+          <div class="a-brand-sub">Muaaz Iqbal</div>
+        </div>
+      </div>
+      <nav class="admin-nav">
+        <button class="admin-nav-item" data-page="overview"><i class="fas fa-th-large"></i> Overview</button>
+        <button class="admin-nav-item" data-page="projects"><i class="fas fa-folder-open"></i> Projects</button>
+        <button class="admin-nav-item" data-page="add-project"><i class="fas fa-plus-circle"></i> Add Project</button>
+        <button class="admin-nav-item" data-page="posters"><i class="fas fa-images"></i> Posters</button>
+        <button class="admin-nav-item" data-page="orders"><i class="fas fa-shopping-cart"></i> Orders</button>
+        <button class="admin-nav-item" data-page="chat"><i class="fas fa-comments"></i> Live Chat</button>
+      </nav>
+      <div class="admin-sidebar-footer">
+        <button class="btn-ghost" id="logoutBtn" style="width:100%;justify-content:center;font-size:0.85rem;">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+        <div style="margin-top:12px;font-size:0.72rem;color:var(--gray);text-align:center;">
+          © 2026 MICH PROJECT
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <div class="admin-top-bar">
+        <h1 id="adminPageTitle" style="font-family:var(--font-display);font-size:1.1rem;background:linear-gradient(90deg,var(--purple),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Dashboard Overview</h1>
+        <a href="index.html" class="btn-ghost" style="font-size:0.85rem;padding:8px 16px;"><i class="fas fa-external-link-alt"></i> View Site</a>
+      </div>
+
+      <!-- OVERVIEW PAGE -->
+      <div id="page-overview" class="admin-page active">
+        <div class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon purple"><i class="fas fa-folder-open"></i></div>
+            <div><div class="admin-stat-num" id="statProjects">0</div><div class="admin-stat-label">Total Projects</div></div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon blue"><i class="fas fa-shopping-cart"></i></div>
+            <div><div class="admin-stat-num" id="statOrders">0</div><div class="admin-stat-label">Total Orders</div></div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon yellow"><i class="fas fa-comments"></i></div>
+            <div><div class="admin-stat-num" id="statChats">0</div><div class="admin-stat-label">Chat Users</div></div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-icon green"><i class="fas fa-users"></i></div>
+            <div><div class="admin-stat-num" id="statVisitors">0</div><div class="admin-stat-label">Live Visitors</div></div>
+          </div>
+        </div>
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3>Quick Info</h3>
+          </div>
+          <div style="padding:20px;">
+            <p style="color:var(--gray);font-size:0.9rem;line-height:1.7;">MICH Admin Panel — Yahan se aap apne projects manage kar sakte hain, orders dekh sakte hain, aur live chat manage kar sakte hain. Left sidebar se navigate karein.</p>
+            <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:10px;padding:14px;">
+                <div style="color:var(--purple);font-weight:700;font-size:0.85rem;margin-bottom:4px;"><i class="fas fa-fire"></i> Firebase</div>
+                <div style="color:var(--gray);font-size:0.8rem;">Realtime database connected</div>
+              </div>
+              <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:14px;">
+                <div style="color:var(--green);font-weight:700;font-size:0.85rem;margin-bottom:4px;"><i class="fas fa-check-circle"></i> PWA</div>
+                <div style="color:var(--gray);font-size:0.8rem;">Service worker active</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS PAGE -->
+      <div id="page-projects" class="admin-page">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-folder-open"></i> All Projects</h3>
+            <button class="btn-primary" style="padding:8px 16px;font-size:0.85rem;" onclick="document.querySelector('[data-page=add-project]').click()">
+              <i class="fas fa-plus"></i> Add New
+            </button>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Poster</th><th>Title</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="projectsTableBody">
+                <tr><td colspan="6" style="text-align:center;color:var(--gray);padding:30px;">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD PROJECT PAGE -->
+      <div id="page-add-project" class="admin-page">
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <h3><i class="fas fa-plus-circle"></i> Add New Project</h3>
+          </div>
+          <form id="addProjectForm" class="add-project-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Project Title *</label>
+                <input type="text" id="projectTitle" placeholder="e.g. MITV Network Portal" required/>
+              </div>
+              <div class="form-group">
+                <label>Category *</label>
+                <select id="projectCategory">
+                  <option value="web">Web Studio</option>
+                  <option value="iptv">IPTV / MITV</option>
+                  <option value="yt">YouTube</option>
+                  <option value="graphics">Graphics</option>
+                  <option value="video">Video Editing</option>
+                  <option value="books">Books Library</option>
+                  <option value="song">AI Songs</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Description *</label>
+              <textarea id="projectDesc" rows="3" placeholder="Project ki description..." required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Price (PKR)</label>
+                <input type="text" id="projectPrice" placeholder="e.g. PKR 15,000"/>
+              </div>
+              <div class="form-group">
+                <label>Poster Image URL</label>
+                <input type="url" id="projectPosterUrl" placeholder="https://..."/>
+                <img id="projectImgPreview" class="img-preview" alt="Preview"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>WhatsApp Number</label>
+                <input type="text" id="projectWa" placeholder="923001234567" value="923001234567"/>
+              </div>
+              <div class="form-group">
+                <label>Telegram Username</label>
+                <input type="text" id="projectTg" placeholder="michproject" value="michproject"/>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" style="margin-top:8px;">
+              <i class="fas fa-plus"></i> Add Project
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- POSTERS PAGE -->
+      <div id="page-posters" class="admin-page">
+        <div class="admin-card">
+          <div class="admin-card-header"><h3><i class="fas fa-images"></i> Manage Posters</h3></div>
+          <form id="addPosterForm" style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Poster Title</label>
+                <input type="text" id="posterTitle" placeholder="e.g. MICH Web Studio" required/>
+              </div>
+              <div class="form-group">
+                <label>Subtitle</label>
+                <input type="text" id="posterSubtitle" placeholder="Short description"/>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Image URL</label>
+                <input type="url" id="posterUrl" placeholder="https://..." required/>
+              </div>
+              <div class="form-group">
+                <label>Price Label</label>
+                <input type="text" id="posterPrice" placeholder="Starting PKR 5,000"/>
+              </div>
+            </div>
+            <button type="submit" class="btn-primary" style="align-self:flex-start;">
+              <i class="fas fa-plus"></i> Add Poster
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ORDERS PAGE -->
+      <div id="page-orders" class="admin-page">
+        <div class="admin-card">
+          <div class="admin-card-header"><h3><i class="fas fa-shopping-cart"></i> All Orders</h3></div>
+          <div style="overflow-x:auto;">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Name</th><th>Phone</th><th>Service</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <tr><td colspan="5" style="text-align:center;color:var(--gray);padding:30px;">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAT PAGE -->
+      <div id="page-chat" class="admin-page">
+        <div class="admin-card" style="height:auto;">
+          <div class="admin-card-header"><h3><i class="fas fa-comments"></i> Live Chat</h3></div>
+          <div class="admin-chat-layout" style="padding:16px;gap:16px;">
+            <div class="chat-user-list" id="chatUserList">
+              <div style="padding:16px;color:var(--gray);font-size:0.85rem;">Loading chats...</div>
+            </div>
+            <div class="admin-chat-window">
+              <div style="padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);font-family:var(--font-display);font-size:0.85rem;font-weight:700;" id="adminChatHeader">Chat Window</div>
+              <div class="admin-chat-messages" id="adminChatMessages">
+                <div style="color:var(--gray);font-size:0.85rem;text-align:center;margin-top:20px;">Left side se user select karein</div>
+              </div>
+              <div class="admin-chat-input">
+                <input type="text" id="adminChatInput" placeholder="Reply type karein..."/>
+                <button id="adminChatSend"><i class="fas fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

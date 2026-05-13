@@ -1,0 +1,21 @@
+{
+  "name": "MICH PROJECT",
+  "short_name": "MICH",
+  "description": "Muslim Islam Org | Muaaz Iqbal Digital Network",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Web Studio", "url": "/#services", "description": "MICH Web Studio" },
+    { "name": "Contact", "url": "/#contact", "description": "Contact Us" },
+    { "name": "Admin", "url": "/admin.html", "description": "Admin Panel" }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en-PK"
+}

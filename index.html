@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MICH PROJECT | Muslim Islam Org | Muaaz Iqbal Digital Network</title>
+  <meta name="description" content="MICH PROJECT - Premium Digital Services by Muaaz Iqbal. Web Studio, IPTV, YouTube, Graphics, Video Editing, Books Library, AI Songs. Muslim Islam Organization."/>
+  <meta name="keywords" content="MICH PROJECT, Muaaz Iqbal, Muslim Islam Org, MITV, Web Studio, IPTV, Android Apps, Graphics, Video Editing, Islamic Books, AI Songs, Pakistan"/>
+  <meta name="author" content="Muaaz Iqbal"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://michproject.com/"/>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://michproject.com/"/>
+  <meta property="og:title" content="MICH PROJECT | Muslim Islam Org | Muaaz Iqbal Digital Network"/>
+  <meta property="og:description" content="Premium Digital Services - Web Studio, IPTV, YouTube, Graphics, Video Editing, Islamic Books, AI Songs"/>
+  <meta property="og:image" content="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png"/>
+  <meta property="og:site_name" content="MICH PROJECT"/>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="MICH PROJECT | Muaaz Iqbal Digital Network"/>
+  <meta name="twitter:description" content="Premium Digital Services by Muslim Islam Org"/>
+  <meta name="twitter:image" content="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png"/>
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#0a0a0f"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="MICH PROJECT"/>
+  <link rel="apple-touch-icon" href="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png"/>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"MICH PROJECT",
+    "url":"https://michproject.com",
+    "logo":"https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png",
+    "description":"Muslim Islam Org | Muaaz Iqbal Digital Network - Premium digital services",
+    "founder":{"@type":"Person","name":"Muaaz Iqbal"},
+    "contactPoint":{"@type":"ContactPoint","contactType":"customer service","availableLanguage":"Urdu, English"}
+  }
+  </script>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loadingScreen">
+  <div class="loader-inner">
+    <div class="loader-logo">
+      <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH Logo"/>
+      <div class="logo-glow-ring"></div>
+    </div>
+    <div class="loader-title">MICH PROJECT</div>
+    <div class="loader-subtitle">Muslim Islam Org | Muaaz Iqbal</div>
+    <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+    <div class="loader-pct" id="loaderPct">0%</div>
+  </div>
+  <div class="loader-particles" id="loaderParticles"></div>
+</div>
+
+<!-- PWA INSTALL BANNER -->
+<div id="pwaInstallBanner" class="pwa-banner hidden">
+  <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="icon"/>
+  <div class="pwa-text">
+    <strong>MICH PROJECT</strong>
+    <span>Install karein — App jaisi experience!</span>
+  </div>
+  <button id="pwaInstallBtn" class="pwa-btn">Install</button>
+  <button id="pwaDismiss" class="pwa-dismiss"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH Logo" class="brand-logo"/>
+      <div class="brand-text">
+        <span class="brand-name">MICH PROJECT</span>
+        <span class="brand-sub">Muslim Islam Org</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="admin.html" class="nav-link nav-admin"><i class="fas fa-lock"></i> Admin</a>
+    </nav>
+    <div class="header-actions">
+      <button class="search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
+      <div class="live-visitors"><span class="live-dot"></span><span id="visitorCount">0</span> Live</div>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <!-- Search Bar -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search projects, services..."/>
+      <button id="searchClose"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE SIDEBAR -->
+<div class="mobile-sidebar" id="mobileSidebar">
+  <div class="sidebar-header">
+    <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="Logo" class="sidebar-logo"/>
+    <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#home"><i class="fas fa-home"></i> Home</a>
+    <a href="#services"><i class="fas fa-th"></i> Services</a>
+    <a href="#projects"><i class="fas fa-folder-open"></i> Projects</a>
+    <a href="#about"><i class="fas fa-user"></i> About</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="admin.html"><i class="fas fa-lock"></i> Admin Panel</a>
+  </nav>
+  <div class="sidebar-footer">
+    <p>© 2026 MICH PROJECT</p>
+    <p>Muslim Islam Org</p>
+  </div>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero-section">
+  <canvas id="particleCanvas"></canvas>
+  <div class="hero-bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span> Premium Digital Network</div>
+    <h1 class="hero-title">
+      <span class="line-1">MICH</span>
+      <span class="line-2">PROJECT</span>
+    </h1>
+    <div class="hero-typewriter">
+      <span class="static-text">We Build </span>
+      <span class="dynamic-text" id="typewriter"></span>
+    </div>
+    <p class="hero-desc">Muslim Islam Org | Muaaz Iqbal Digital Network — Premium Web, IPTV, Graphics & AI Services from Pakistan</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> Explore Projects</a>
+      <a href="#contact" class="btn-ghost"><i class="fas fa-comments"></i> Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="500">0</span><span>+</span><small>Projects</small></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="1200">0</span><span>+</span><small>Clients</small></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="7">0</span><span></span><small>Services</small></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="5">0</span><span>★</span><small>Rating</small></div>
+    </div>
+  </div>
+  <div class="hero-poster-float">
+    <div class="poster-orbit">
+      <div class="poster-card p1"><img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="Web Studio"/><span>Web Studio</span></div>
+      <div class="poster-card p2"><img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="IPTV"/><span>MITV</span></div>
+      <div class="poster-card p3"><img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="Graphics"/><span>Graphics</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services" class="services-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">MICH <span class="neon-text">Digital</span> Services</h2>
+      <p class="section-desc">Premium digital solutions for every need</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="0" onclick="openService('web')">
+        <div class="service-icon"><i class="fas fa-code"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH Web Studio</h3>
+        <p>Websites, Android Apps, IPTV Portals, eCommerce Solutions</p>
+        <div class="service-tags"><span>Websites</span><span>Android</span><span>IPTV</span><span>eCommerce</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="80" onclick="openService('yt')">
+        <div class="service-icon"><i class="fab fa-youtube"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH YT Project</h3>
+        <p>YouTube Setup, Live Streaming, SEO, Channel Branding</p>
+        <div class="service-tags"><span>YouTube</span><span>Streaming</span><span>SEO</span><span>Branding</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="160" onclick="openService('mitv')">
+        <div class="service-icon"><i class="fas fa-tv"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH MITV</h3>
+        <p>IPTV Services, Live TV, Sports Channels, Movies</p>
+        <div class="service-tags"><span>IPTV</span><span>Live TV</span><span>Sports</span><span>Movies</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="240" onclick="openService('graphics')">
+        <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH Graphics</h3>
+        <p>Posters, Logos, Thumbnails, Flex Designs</p>
+        <div class="service-tags"><span>Posters</span><span>Logos</span><span>Thumbnails</span><span>Flex</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="320" onclick="openService('video')">
+        <div class="service-icon"><i class="fas fa-film"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH Video Editing</h3>
+        <p>AI Videos, Reels, Shorts, Motion Graphics</p>
+        <div class="service-tags"><span>AI Video</span><span>Reels</span><span>Shorts</span><span>Motion</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400" onclick="openService('books')">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH Books Library</h3>
+        <p>PDF Books, Islamic Books, Online Courses</p>
+        <div class="service-tags"><span>PDF Books</span><span>Islamic</span><span>Courses</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="480" onclick="openService('song')">
+        <div class="service-icon"><i class="fas fa-music"></i></div>
+        <div class="service-glow"></div>
+        <h3>MICH You Song</h3>
+        <p>AI Song Generation, Naat, Lyrics, Music Production</p>
+        <div class="service-tags"><span>AI Songs</span><span>Naat</span><span>Lyrics</span><span>Music</span></div>
+        <a class="service-cta">Explore <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects" class="projects-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Featured <span class="neon-text">Projects</span></h2>
+      <p class="section-desc">Our latest work — live & delivered</p>
+    </div>
+    <div class="project-filters" data-aos="fade-up">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="iptv">IPTV</button>
+      <button class="filter-btn" data-filter="graphics">Graphics</button>
+      <button class="filter-btn" data-filter="video">Video</button>
+      <button class="filter-btn" data-filter="yt">YouTube</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Projects loaded from Firebase -->
+      <div class="project-card-skeleton"></div>
+      <div class="project-card-skeleton"></div>
+      <div class="project-card-skeleton"></div>
+      <div class="project-card-skeleton"></div>
+      <div class="project-card-skeleton"></div>
+      <div class="project-card-skeleton"></div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTER SLIDER -->
+<section class="poster-slider-section">
+  <div class="swiper posterSwiper">
+    <div class="swiper-wrapper" id="posterSwiperWrapper">
+      <div class="swiper-slide poster-slide">
+        <div class="poster-content">
+          <div class="poster-icon"><i class="fas fa-code"></i></div>
+          <h3>MICH Web Studio</h3>
+          <p>Professional websites & apps</p>
+          <span class="poster-price">Starting PKR 5,000</span>
+        </div>
+      </div>
+      <div class="swiper-slide poster-slide ps2">
+        <div class="poster-content">
+          <div class="poster-icon"><i class="fab fa-youtube"></i></div>
+          <h3>MICH YT Project</h3>
+          <p>Complete YouTube setup & growth</p>
+          <span class="poster-price">Starting PKR 3,000</span>
+        </div>
+      </div>
+      <div class="swiper-slide poster-slide ps3">
+        <div class="poster-content">
+          <div class="poster-icon"><i class="fas fa-tv"></i></div>
+          <h3>MICH MITV</h3>
+          <p>Premium IPTV Services</p>
+          <span class="poster-price">Monthly Plans Available</span>
+        </div>
+      </div>
+      <div class="swiper-slide poster-slide ps4">
+        <div class="poster-content">
+          <div class="poster-icon"><i class="fas fa-music"></i></div>
+          <h3>MICH You Song</h3>
+          <p>AI-powered Naat & Song Generation</p>
+          <span class="poster-price">Starting PKR 1,500</span>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-visual" data-aos="fade-right">
+        <div class="about-logo-wrap">
+          <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH PROJECT Logo" class="about-logo"/>
+          <div class="about-ring r1"></div>
+          <div class="about-ring r2"></div>
+          <div class="about-ring r3"></div>
+        </div>
+      </div>
+      <div class="about-content" data-aos="fade-left">
+        <div class="section-tag">About Us</div>
+        <h2 class="section-title">Who is <span class="neon-text">MICH PROJECT?</span></h2>
+        <p>MICH PROJECT is a premium digital services network operated by <strong>Muaaz Iqbal</strong> under the <strong>Muslim Islam Organization</strong>, based in Kasur, Punjab, Pakistan.</p>
+        <p>We specialize in building professional websites, IPTV portals, Android apps, YouTube channels, AI content, Islamic digital media, and creative graphics — all under one roof.</p>
+        <div class="about-highlights">
+          <div class="highlight"><i class="fas fa-check-circle"></i> 100% Production Ready</div>
+          <div class="highlight"><i class="fas fa-check-circle"></i> Firebase Powered</div>
+          <div class="highlight"><i class="fas fa-check-circle"></i> Islamic Values</div>
+          <div class="highlight"><i class="fas fa-check-circle"></i> 24/7 Support</div>
+        </div>
+        <div class="about-btns">
+          <a href="https://wa.me/923001234567" target="_blank" class="btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+          <a href="https://t.me/michproject" target="_blank" class="btn-ghost"><i class="fab fa-telegram"></i> Telegram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">Order a <span class="neon-text">Service</span></h2>
+    </div>
+    <div class="contact-inner">
+      <div class="contact-form-wrap" data-aos="fade-right">
+        <form id="orderForm" class="order-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="orderName" placeholder="Aapka naam..." required/>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number</label>
+            <input type="tel" id="orderPhone" placeholder="+92 300..." required/>
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select id="orderService">
+              <option>MICH Web Studio</option>
+              <option>MICH YT Project</option>
+              <option>MICH MITV</option>
+              <option>MICH Graphics</option>
+              <option>MICH Video Editing</option>
+              <option>MICH Books Library</option>
+              <option>MICH You Song</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message / Requirements</label>
+            <textarea id="orderMsg" placeholder="Aapki requirements likhe..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" id="orderSubmitBtn">
+            <i class="fas fa-paper-plane"></i> Send Order
+          </button>
+          <div id="orderStatus" class="order-status hidden"></div>
+        </form>
+      </div>
+      <div class="contact-info" data-aos="fade-left">
+        <div class="info-card">
+          <i class="fab fa-whatsapp"></i>
+          <div>
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/923001234567" target="_blank">+92 300 1234567</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <i class="fab fa-telegram"></i>
+          <div>
+            <strong>Telegram</strong>
+            <a href="https://t.me/michproject" target="_blank">@michproject</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Location</strong>
+            <span>Kasur, Punjab, Pakistan</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Hours</strong>
+            <span>24/7 Online Support</span>
+          </div>
+        </div>
+        <!-- Live Chat Box -->
+        <div class="mini-chat-box" id="miniChatBox">
+          <div class="chat-header"><i class="fas fa-comments"></i> Live Chat <span class="online-badge">Online</span></div>
+          <div class="chat-messages" id="chatMessages"></div>
+          <div class="chat-input-wrap">
+            <input type="text" id="chatInput" placeholder="Message likhe..."/>
+            <button id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="main-footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH Logo" class="footer-logo"/>
+          <h3>MICH PROJECT</h3>
+          <p>Muslim Islam Org | Muaaz Iqbal Digital Network</p>
+          <p>Kasur, Punjab, Pakistan</p>
+          <div class="footer-socials">
+            <a href="https://wa.me/923001234567" target="_blank" class="social-btn wa"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/michproject" target="_blank" class="social-btn tg"><i class="fab fa-telegram"></i></a>
+            <a href="#" class="social-btn yt"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-btn fb"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Services</h4>
+          <a href="#">MICH Web Studio</a>
+          <a href="#">MICH YT Project</a>
+          <a href="#">MICH MITV</a>
+          <a href="#">MICH Graphics</a>
+          <a href="#">MICH Video Editing</a>
+          <a href="#">MICH Books Library</a>
+          <a href="#">MICH You Song</a>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="admin.html">Admin Panel</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+        <div class="footer-links">
+          <h4>Organization</h4>
+          <a href="#">Muslim Islam Org</a>
+          <a href="#">MiTV Network</a>
+          <a href="#">MI Academy</a>
+          <a href="#">Dajjali Matrix</a>
+          <a href="#">NoorPost</a>
+          <a href="#">MI Library</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© 2026 MICH PROJECT — Muslim Islam Org | Muaaz Iqbal. All Rights Reserved.</p>
+      <p>Built with ❤️ in Pakistan</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<div class="float-buttons">
+  <a href="https://wa.me/923001234567" target="_blank" class="float-btn wa-float" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/michproject" target="_blank" class="float-btn tg-float" title="Telegram"><i class="fab fa-telegram"></i></a>
+  <button class="float-btn chat-float" id="chatToggle" title="Live Chat"><i class="fas fa-comments"></i></button>
+</div>
+
+<!-- CHAT POPUP -->
+<div class="chat-popup" id="chatPopup">
+  <div class="chat-popup-header">
+    <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="Logo"/>
+    <div>
+      <strong>MICH PROJECT</strong>
+      <span class="online-dot"></span><small>Online</small>
+    </div>
+    <button id="chatPopupClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="chat-popup-messages" id="chatPopupMessages">
+    <div class="msg admin-msg">Assalamu Alaikum! MICH PROJECT mein khush aamdeed. Kya help kar sakta hoon? 🌟</div>
+  </div>
+  <div class="chat-popup-input">
+    <input type="text" id="chatPopupInput" placeholder="Message..."/>
+    <button id="chatPopupSend"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- PROJECT MODAL -->
+<div class="project-modal" id="projectModal">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-inner">
+    <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+
+<!-- SERVICE MODAL -->
+<div class="service-modal" id="serviceModal">
+  <div class="modal-backdrop" id="serviceModalBackdrop"></div>
+  <div class="modal-inner" id="serviceModalInner"></div>
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- AOS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<!-- Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- Main JS -->
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/pwa.js"></script>
+</body>
+</html>
