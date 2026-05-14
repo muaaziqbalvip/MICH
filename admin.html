@@ -1,287 +1,513 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MICH Admin Panel | MICH PROJECT</title>
-  <meta name="robots" content="noindex, nofollow"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/admin.css"/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>MICH Admin Panel</title><meta name="robots" content="noindex,nofollow"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{--bg:#050508;--bg2:#08080f;--bg3:#0d0d1a;--p:#a855f7;--p2:#7c3aed;--b:#3b82f6;--b2:#06b6d4;--y:#facc15;--r:#f43f5e;--g:#22c55e;--w:#f1f5f9;--gray:#64748b;--gray2:#94a3b8;--card:rgba(255,255,255,.04);--border:rgba(255,255,255,.07);--sidebar:240px;--trans:all .3s cubic-bezier(.4,0,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--w);font-family:'Syne',sans-serif;min-height:100vh}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--p);border-radius:2px}
+/* LOGIN */
+.login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;overflow:hidden}
+.login-page::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(124,58,237,.12),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+.login-card{background:rgba(255,255,255,.04);border:1px solid rgba(168,85,247,.3);border-radius:24px;padding:44px 36px;width:100%;max-width:400px;position:relative;z-index:2;backdrop-filter:blur(20px)}
+.login-logo{text-align:center;margin-bottom:28px}
+.login-logo img{width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 18px var(--p))}
+.login-logo h2{font-family:'Orbitron',monospace;font-size:1.2rem;margin-top:10px;background:linear-gradient(90deg,var(--p),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.login-logo p{color:var(--gray2);font-size:.78rem;margin-top:4px}
+.fgrp{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.fgrp label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray2)}
+.fgrp input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:11px 14px;color:var(--w);font-family:'Syne',sans-serif;font-size:.9rem;outline:none;transition:var(--trans)}
+.fgrp input:focus{border-color:rgba(168,85,247,.5);background:rgba(168,85,247,.04)}
+.login-err{background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.25);color:var(--r);padding:10px 14px;border-radius:10px;font-size:.82rem;margin-bottom:14px;display:none}
+.btn-p{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--p2),var(--b));color:#fff;padding:13px;border-radius:12px;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;width:100%;cursor:pointer;border:none;transition:var(--trans)}
+.btn-p:hover{opacity:.9}
+.btn-s{display:flex;align-items:center;justify-content:center;gap:8px;background:transparent;color:var(--gray2);padding:10px;border-radius:12px;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:var(--trans);text-decoration:none}
+.btn-s:hover{border-color:var(--p);color:var(--p)}
+.back-link{display:block;text-align:center;margin-top:14px;color:var(--gray2);font-size:.82rem;text-decoration:none}
+.back-link:hover{color:var(--p)}
+/* LAYOUT */
+.admin-layout{display:flex;min-height:100vh}
+/* SIDEBAR */
+.a-sidebar{width:var(--sidebar);background:var(--bg2);border-right:1px solid var(--border);position:fixed;left:0;top:0;bottom:0;z-index:100;display:flex;flex-direction:column;overflow-y:auto}
+.a-sb-top{padding:18px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.a-sb-top img{width:38px;height:38px;object-fit:contain}
+.a-sb-bn{font-family:'Orbitron',monospace;font-size:.8rem;font-weight:900;background:linear-gradient(90deg,var(--p),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.a-sb-bs{font-size:.6rem;color:var(--gray2)}
+.a-nav{flex:1;padding:14px 8px;display:flex;flex-direction:column;gap:2px}
+.a-nav-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gray);padding:8px 12px 4px;font-weight:700}
+.a-nav-it{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;color:var(--gray2);font-size:.85rem;font-weight:600;transition:var(--trans);background:none;border:none;width:100%;text-align:left}
+.a-nav-it:hover,.a-nav-it.on{background:rgba(168,85,247,.12);color:var(--p)}
+.a-nav-it i{width:16px;text-align:center}
+.a-sb-bot{padding:12px;border-top:1px solid var(--border)}
+/* MAIN */
+.a-main{flex:1;margin-left:var(--sidebar);display:flex;flex-direction:column}
+.a-topbar{background:rgba(5,5,8,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:58px;display:flex;align-items:center;padding:0 24px;gap:14px;position:sticky;top:0;z-index:50}
+.a-topbar h1{font-family:'Orbitron',monospace;font-size:.95rem;background:linear-gradient(90deg,var(--p),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.a-body{padding:24px;flex:1}
+/* PAGES */
+.a-page{display:none;animation:ain .35s ease}
+.a-page.on{display:block}
+@keyframes ain{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat-c{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;display:flex;align-items:center;gap:14px}
+.stat-ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.si-p{background:rgba(168,85,247,.12);color:var(--p);border:1px solid rgba(168,85,247,.2)}
+.si-b{background:rgba(59,130,246,.12);color:var(--b);border:1px solid rgba(59,130,246,.2)}
+.si-y{background:rgba(250,204,21,.12);color:var(--y);border:1px solid rgba(250,204,21,.2)}
+.si-g{background:rgba(34,197,94,.12);color:var(--g);border:1px solid rgba(34,197,94,.2)}
+.stat-n{font-family:'Orbitron',monospace;font-size:1.7rem;font-weight:900;color:var(--w)}
+.stat-l{font-size:.72rem;color:var(--gray2);text-transform:uppercase;letter-spacing:.08em}
+/* CARD */
+.a-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:20px}
+.a-card-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.a-card-head h3{font-family:'Orbitron',monospace;font-size:.85rem;font-weight:700}
+/* TABLE */
+.a-table{width:100%;border-collapse:collapse}
+.a-table th{padding:10px 14px;text-align:left;font-size:.68rem;color:var(--gray2);text-transform:uppercase;letter-spacing:.1em;background:rgba(255,255,255,.02);border-bottom:1px solid var(--border)}
+.a-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem;color:var(--gray2)}
+.a-table tr:last-child td{border:none}
+.a-table tr:hover td{background:rgba(255,255,255,.02)}
+.a-table td strong{color:var(--w)}
+.stb{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.68rem;font-weight:700}
+.st-p{background:rgba(250,204,21,.08);color:var(--y);border:1px solid rgba(250,204,21,.25)}
+.st-a{background:rgba(34,197,94,.08);color:var(--g);border:1px solid rgba(34,197,94,.25)}
+.st-d{background:rgba(168,85,247,.08);color:var(--p);border:1px solid rgba(168,85,247,.25)}
+.btn-del{background:rgba(244,63,94,.08);border:1px solid rgba(244,63,94,.25);color:var(--r);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:.75rem;font-weight:700;transition:var(--trans)}
+.btn-del:hover{background:rgba(244,63,94,.15)}
+.btn-act{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);color:var(--g);padding:4px 10px;border-radius:6px;cursor:pointer;font-size:.75rem;font-weight:700;transition:var(--trans);margin-right:6px}
+.btn-act:hover{background:rgba(34,197,94,.15)}
+/* FORM */
+.a-form{padding:22px;display:flex;flex-direction:column;gap:16px}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fgrp2{display:flex;flex-direction:column;gap:6px}
+.fgrp2 label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray2)}
+.fgrp2 input,.fgrp2 select,.fgrp2 textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 13px;color:var(--w);font-family:'Syne',sans-serif;font-size:.88rem;outline:none;transition:var(--trans);width:100%}
+.fgrp2 input:focus,.fgrp2 select:focus,.fgrp2 textarea:focus{border-color:rgba(168,85,247,.5)}
+.fgrp2 select option{background:var(--bg2)}
+.img-prev{width:100%;height:150px;object-fit:cover;border-radius:10px;margin-top:8px;display:none}
+.img-prev.show{display:block}
+/* CHAT */
+.chat-grid{display:grid;grid-template-columns:250px 1fr;gap:16px;height:560px;padding:16px}
+.chat-users{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;overflow-y:auto}
+.cu-item{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.04);cursor:pointer;display:flex;align-items:center;gap:10px;transition:var(--trans)}
+.cu-item:hover,.cu-item.on{background:rgba(168,85,247,.08)}
+.cu-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--p2),var(--b));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;color:#fff;flex-shrink:0}
+.cu-name{font-size:.85rem;font-weight:700;color:var(--w)}
+.cu-prev{font-size:.72rem;color:var(--gray2);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:130px}
+.cu-badge{background:var(--r);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;margin-left:auto;flex-shrink:0}
+.chat-win{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;overflow:hidden}
+.cw-head{padding:12px 16px;border-bottom:1px solid var(--border);font-family:'Orbitron',monospace;font-size:.82rem;font-weight:700}
+.cw-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px}
+.cw-inp{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.cw-inp input{flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;padding:10px 13px;color:var(--w);font-family:'Syne',sans-serif;font-size:.85rem;outline:none}
+.cw-inp input:focus{border-color:rgba(168,85,247,.4)}
+.cw-inp button{background:linear-gradient(135deg,var(--p2),var(--b));padding:10px 18px;border-radius:10px;color:#fff;font-weight:700;font-size:.82rem;cursor:pointer;border:none}
+.cmsg{padding:9px 13px;border-radius:12px;font-size:.82rem;max-width:75%}
+.cmsg.u{background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.15);color:var(--w);align-self:flex-start;border-bottom-left-radius:3px}
+.cmsg.a{background:linear-gradient(135deg,var(--p2),var(--b));color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+/* TOAST */
+.toast{position:fixed;top:20px;right:20px;z-index:9999;padding:12px 18px;border-radius:12px;font-weight:700;font-size:.85rem;backdrop-filter:blur(10px);animation:tin .3s ease;max-width:300px}
+@keyframes tin{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+.toast.ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:var(--g)}
+.toast.err{background:rgba(244,63,94,.12);border:1px solid rgba(244,63,94,.3);color:var(--r)}
+/* POSTER PREVIEW GRID */
+.poster-admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;padding:16px}
+.poster-a-card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative}
+.poster-a-img{width:100%;height:120px;object-fit:cover;display:block}
+.poster-a-img-ph{width:100%;height:120px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(6,182,212,.1))}
+.poster-a-body{padding:10px}
+.poster-a-title{font-size:.8rem;font-weight:700;color:var(--w);margin-bottom:4px}
+.poster-a-price{font-size:.72rem;color:var(--y)}
+.poster-a-del{position:absolute;top:6px;right:6px;background:rgba(244,63,94,.85);border:none;color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:.72rem;display:flex;align-items:center;justify-content:center}
+/* Responsive */
+@media(max-width:900px){.stats-row{grid-template-columns:1fr 1fr}.form-row2{grid-template-columns:1fr}.chat-grid{grid-template-columns:1fr;height:auto}.a-sidebar{display:none}.a-main{margin-left:0}}
+</style>
 </head>
-<body class="admin-body">
+<body>
 
-<!-- LOGIN PAGE -->
-<div id="adminLoginPage">
-  <div class="admin-login-wrap">
+<!-- LOGIN -->
+<div id="loginPage">
+  <div class="login-page">
     <div class="login-card">
       <div class="login-logo">
-        <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH Logo"/>
+        <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH"/>
         <h2>MICH ADMIN</h2>
-        <p>Muslim Islam Org — Secure Access</p>
+        <p>Muslim Islam Org — Secure Panel</p>
       </div>
-      <form id="adminLoginForm">
-        <div class="form-group" style="margin-bottom:16px;">
-          <label>Email</label>
-          <input type="email" id="adminEmail" placeholder="admin@michproject.com" value="muaaz@michproject.com" required/>
-        </div>
-        <div class="form-group" style="margin-bottom:24px;">
-          <label>Password</label>
-          <input type="password" id="adminPass" placeholder="••••••••" required/>
-        </div>
-        <div id="loginError" style="display:none;color:var(--red);font-size:0.85rem;margin-bottom:16px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);padding:10px;border-radius:8px;"></div>
-        <button type="submit" class="btn-primary btn-full">
-          <i class="fas fa-sign-in-alt"></i> Login to Admin
-        </button>
-        <div style="margin-top:16px;text-align:center;">
-          <a href="index.html" style="color:var(--gray);font-size:0.85rem;text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to Website</a>
-        </div>
+      <form id="loginForm">
+        <div class="fgrp"><label>Email</label><input type="email" id="lEmail" value="admin@michproject.com" required/></div>
+        <div class="fgrp"><label>Password</label><input type="password" id="lPass" placeholder="••••••••" required/></div>
+        <div class="login-err" id="loginErr"></div>
+        <button type="submit" class="btn-p"><i class="fas fa-sign-in-alt"></i> Login</button>
       </form>
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Website</a>
     </div>
   </div>
 </div>
 
-<!-- DASHBOARD PAGE -->
-<div id="adminDashboardPage" class="hidden">
-  <div class="admin-layout">
+<!-- DASHBOARD -->
+<div id="dashPage" style="display:none">
+<div class="admin-layout">
+  <aside class="a-sidebar">
+    <div class="a-sb-top">
+      <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="MICH"/>
+      <div><span class="a-sb-bn">MICH ADMIN</span><span class="a-sb-bs">Muaaz Iqbal</span></div>
+    </div>
+    <nav class="a-nav">
+      <div class="a-nav-lbl">Dashboard</div>
+      <button class="a-nav-it on" data-p="overview"><i class="fas fa-th-large"></i> Overview</button>
+      <button class="a-nav-it" data-p="projects"><i class="fas fa-folder-open"></i> Projects</button>
+      <button class="a-nav-it" data-p="add"><i class="fas fa-plus-circle"></i> Add Project</button>
+      <button class="a-nav-it" data-p="posters"><i class="fas fa-images"></i> Posters</button>
+      <button class="a-nav-it" data-p="orders"><i class="fas fa-shopping-cart"></i> Orders</button>
+      <button class="a-nav-it" data-p="chat"><i class="fas fa-comments"></i> Live Chat</button>
+    </nav>
+    <div class="a-sb-bot">
+      <button class="btn-s" id="logoutBtn" style="width:100%"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
 
-    <!-- SIDEBAR -->
-    <aside class="admin-sidebar">
-      <div class="admin-sidebar-header">
-        <img src="https://i.ibb.co/QvQXfgxt/IMG-20260509-125341-removebg-preview.png" alt="Logo"/>
-        <div>
-          <div class="a-brand-name">MICH ADMIN</div>
-          <div class="a-brand-sub">Muaaz Iqbal</div>
-        </div>
+  <div class="a-main">
+    <div class="a-topbar">
+      <h1 id="pageTitle">Overview</h1>
+      <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <span style="font-size:.75rem;color:var(--gray2)">Live Visitors: <strong id="liveVis" style="color:var(--g)">0</strong></span>
+        <a href="index.html" class="btn-s" style="padding:6px 14px;font-size:.78rem"><i class="fas fa-external-link-alt"></i> View Site</a>
       </div>
-      <nav class="admin-nav">
-        <button class="admin-nav-item" data-page="overview"><i class="fas fa-th-large"></i> Overview</button>
-        <button class="admin-nav-item" data-page="projects"><i class="fas fa-folder-open"></i> Projects</button>
-        <button class="admin-nav-item" data-page="add-project"><i class="fas fa-plus-circle"></i> Add Project</button>
-        <button class="admin-nav-item" data-page="posters"><i class="fas fa-images"></i> Posters</button>
-        <button class="admin-nav-item" data-page="orders"><i class="fas fa-shopping-cart"></i> Orders</button>
-        <button class="admin-nav-item" data-page="chat"><i class="fas fa-comments"></i> Live Chat</button>
-      </nav>
-      <div class="admin-sidebar-footer">
-        <button class="btn-ghost" id="logoutBtn" style="width:100%;justify-content:center;font-size:0.85rem;">
-          <i class="fas fa-sign-out-alt"></i> Logout
-        </button>
-        <div style="margin-top:12px;font-size:0.72rem;color:var(--gray);text-align:center;">
-          © 2026 MICH PROJECT
-        </div>
-      </div>
-    </aside>
+    </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="admin-main">
-      <div class="admin-top-bar">
-        <h1 id="adminPageTitle" style="font-family:var(--font-display);font-size:1.1rem;background:linear-gradient(90deg,var(--purple),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Dashboard Overview</h1>
-        <a href="index.html" class="btn-ghost" style="font-size:0.85rem;padding:8px 16px;"><i class="fas fa-external-link-alt"></i> View Site</a>
-      </div>
+    <div class="a-body">
 
-      <!-- OVERVIEW PAGE -->
-      <div id="page-overview" class="admin-page active">
-        <div class="admin-stats-grid">
-          <div class="admin-stat-card">
-            <div class="admin-stat-icon purple"><i class="fas fa-folder-open"></i></div>
-            <div><div class="admin-stat-num" id="statProjects">0</div><div class="admin-stat-label">Total Projects</div></div>
-          </div>
-          <div class="admin-stat-card">
-            <div class="admin-stat-icon blue"><i class="fas fa-shopping-cart"></i></div>
-            <div><div class="admin-stat-num" id="statOrders">0</div><div class="admin-stat-label">Total Orders</div></div>
-          </div>
-          <div class="admin-stat-card">
-            <div class="admin-stat-icon yellow"><i class="fas fa-comments"></i></div>
-            <div><div class="admin-stat-num" id="statChats">0</div><div class="admin-stat-label">Chat Users</div></div>
-          </div>
-          <div class="admin-stat-card">
-            <div class="admin-stat-icon green"><i class="fas fa-users"></i></div>
-            <div><div class="admin-stat-num" id="statVisitors">0</div><div class="admin-stat-label">Live Visitors</div></div>
-          </div>
+      <!-- OVERVIEW -->
+      <div class="a-page on" id="pg-overview">
+        <div class="stats-row">
+          <div class="stat-c"><div class="stat-ic si-p"><i class="fas fa-folder-open"></i></div><div><div class="stat-n" id="stProj">0</div><div class="stat-l">Projects</div></div></div>
+          <div class="stat-c"><div class="stat-ic si-b"><i class="fas fa-shopping-cart"></i></div><div><div class="stat-n" id="stOrd">0</div><div class="stat-l">Orders</div></div></div>
+          <div class="stat-c"><div class="stat-ic si-y"><i class="fas fa-comments"></i></div><div><div class="stat-n" id="stChat">0</div><div class="stat-l">Chats</div></div></div>
+          <div class="stat-c"><div class="stat-ic si-g"><i class="fas fa-users"></i></div><div><div class="stat-n" id="stVis">0</div><div class="stat-l">Visitors</div></div></div>
         </div>
-        <div class="admin-card">
-          <div class="admin-card-header">
-            <h3>Quick Info</h3>
-          </div>
-          <div style="padding:20px;">
-            <p style="color:var(--gray);font-size:0.9rem;line-height:1.7;">MICH Admin Panel — Yahan se aap apne projects manage kar sakte hain, orders dekh sakte hain, aur live chat manage kar sakte hain. Left sidebar se navigate karein.</p>
-            <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-              <div style="background:rgba(168,85,247,0.08);border:1px solid rgba(168,85,247,0.2);border-radius:10px;padding:14px;">
-                <div style="color:var(--purple);font-weight:700;font-size:0.85rem;margin-bottom:4px;"><i class="fas fa-fire"></i> Firebase</div>
-                <div style="color:var(--gray);font-size:0.8rem;">Realtime database connected</div>
-              </div>
-              <div style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:14px;">
-                <div style="color:var(--green);font-weight:700;font-size:0.85rem;margin-bottom:4px;"><i class="fas fa-check-circle"></i> PWA</div>
-                <div style="color:var(--gray);font-size:0.8rem;">Service worker active</div>
-              </div>
-            </div>
+        <div class="a-card">
+          <div class="a-card-head"><h3>Quick Info</h3></div>
+          <div style="padding:20px;color:var(--gray2);font-size:.88rem;line-height:1.8">
+            <p>✅ Firebase connected — <strong style="color:var(--g)">ramadan-2385b</strong></p>
+            <p>📦 Add projects from <strong style="color:var(--p)">"Add Project"</strong> tab — poster image URL add karo, details likho.</p>
+            <p>🎠 Homepage pe posters automatically rotate hoti hain.</p>
+            <p>💬 Live Chat mein users ke messages dekho aur reply karo.</p>
+            <p>🔒 Admin Password change karne ke liye Firebase Auth use karo.</p>
           </div>
         </div>
       </div>
 
-      <!-- PROJECTS PAGE -->
-      <div id="page-projects" class="admin-page">
-        <div class="admin-card">
-          <div class="admin-card-header">
+      <!-- PROJECTS LIST -->
+      <div class="a-page" id="pg-projects">
+        <div class="a-card">
+          <div class="a-card-head">
             <h3><i class="fas fa-folder-open"></i> All Projects</h3>
-            <button class="btn-primary" style="padding:8px 16px;font-size:0.85rem;" onclick="document.querySelector('[data-page=add-project]').click()">
-              <i class="fas fa-plus"></i> Add New
-            </button>
+            <button class="btn-p" style="padding:7px 14px;font-size:.78rem" onclick="showPage('add')"><i class="fas fa-plus"></i> Add New</button>
           </div>
-          <div style="overflow-x:auto;">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Poster</th><th>Title</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="projectsTableBody">
-                <tr><td colspan="6" style="text-align:center;color:var(--gray);padding:30px;">Loading...</td></tr>
-              </tbody>
+          <div style="overflow-x:auto">
+            <table class="a-table">
+              <thead><tr><th>Poster</th><th>Title</th><th>Category</th><th>Price</th><th>Actions</th></tr></thead>
+              <tbody id="projTbody"><tr><td colspan="5" style="text-align:center;padding:30px;color:var(--gray2)">Loading...</td></tr></tbody>
             </table>
           </div>
         </div>
       </div>
 
-      <!-- ADD PROJECT PAGE -->
-      <div id="page-add-project" class="admin-page">
-        <div class="admin-card">
-          <div class="admin-card-header">
-            <h3><i class="fas fa-plus-circle"></i> Add New Project</h3>
-          </div>
-          <form id="addProjectForm" class="add-project-form">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Project Title *</label>
-                <input type="text" id="projectTitle" placeholder="e.g. MITV Network Portal" required/>
-              </div>
-              <div class="form-group">
-                <label>Category *</label>
-                <select id="projectCategory">
-                  <option value="web">Web Studio</option>
-                  <option value="iptv">IPTV / MITV</option>
-                  <option value="yt">YouTube</option>
-                  <option value="graphics">Graphics</option>
-                  <option value="video">Video Editing</option>
-                  <option value="books">Books Library</option>
-                  <option value="song">AI Songs</option>
+      <!-- ADD PROJECT -->
+      <div class="a-page" id="pg-add">
+        <div class="a-card">
+          <div class="a-card-head"><h3><i class="fas fa-plus-circle"></i> Add New Project</h3></div>
+          <form id="addProjForm" class="a-form">
+            <div class="form-row2">
+              <div class="fgrp2"><label>Title *</label><input type="text" id="pTitle" placeholder="e.g. MITV Network Portal" required/></div>
+              <div class="fgrp2"><label>Category *</label>
+                <select id="pCat">
+                  <option value="web">Web Studio</option><option value="iptv">IPTV / MITV</option><option value="yt">YouTube</option>
+                  <option value="graphics">Graphics</option><option value="video">Video Editing</option><option value="books">Books Library</option><option value="song">AI Songs</option>
                 </select>
               </div>
             </div>
-            <div class="form-group">
-              <label>Description *</label>
-              <textarea id="projectDesc" rows="3" placeholder="Project ki description..." required></textarea>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Price (PKR)</label>
-                <input type="text" id="projectPrice" placeholder="e.g. PKR 15,000"/>
-              </div>
-              <div class="form-group">
+            <div class="fgrp2"><label>Description *</label><textarea id="pDesc" rows="3" placeholder="Project ki detail..." required></textarea></div>
+            <div class="form-row2">
+              <div class="fgrp2"><label>Price (PKR)</label><input type="text" id="pPrice" placeholder="e.g. PKR 15,000"/></div>
+              <div class="fgrp2">
                 <label>Poster Image URL</label>
-                <input type="url" id="projectPosterUrl" placeholder="https://..."/>
-                <img id="projectImgPreview" class="img-preview" alt="Preview"/>
+                <input type="url" id="pImg" placeholder="https://i.ibb.co/..."/>
+                <img id="pImgPrev" class="img-prev" alt="Preview"/>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>WhatsApp Number</label>
-                <input type="text" id="projectWa" placeholder="923001234567" value="923001234567"/>
-              </div>
-              <div class="form-group">
-                <label>Telegram Username</label>
-                <input type="text" id="projectTg" placeholder="michproject" value="michproject"/>
-              </div>
+            <div class="form-row2">
+              <div class="fgrp2"><label>WhatsApp Number</label><input type="text" id="pWa" placeholder="923001234567" value="923001234567"/></div>
+              <div class="fgrp2"><label>Telegram Username</label><input type="text" id="pTg" placeholder="michproject" value="michproject"/></div>
             </div>
-            <button type="submit" class="btn-primary" style="margin-top:8px;">
-              <i class="fas fa-plus"></i> Add Project
-            </button>
+            <button type="submit" class="btn-p" style="align-self:flex-start;padding:12px 28px"><i class="fas fa-plus"></i> Add Project</button>
           </form>
         </div>
       </div>
 
-      <!-- POSTERS PAGE -->
-      <div id="page-posters" class="admin-page">
-        <div class="admin-card">
-          <div class="admin-card-header"><h3><i class="fas fa-images"></i> Manage Posters</h3></div>
-          <form id="addPosterForm" style="padding:24px;display:flex;flex-direction:column;gap:16px;">
-            <div class="form-row">
-              <div class="form-group">
-                <label>Poster Title</label>
-                <input type="text" id="posterTitle" placeholder="e.g. MICH Web Studio" required/>
+      <!-- POSTERS -->
+      <div class="a-page" id="pg-posters">
+        <div class="a-card">
+          <div class="a-card-head"><h3><i class="fas fa-images"></i> Manage Posters (Homepage Carousel)</h3></div>
+          <form id="addPosterForm" class="a-form">
+            <div class="form-row2">
+              <div class="fgrp2"><label>Poster Title *</label><input type="text" id="ptTitle" placeholder="e.g. MICH Web Studio" required/></div>
+              <div class="fgrp2"><label>Subtitle</label><input type="text" id="ptSub" placeholder="Short tagline"/></div>
+            </div>
+            <div class="form-row2">
+              <div class="fgrp2">
+                <label>Image URL *</label>
+                <input type="url" id="ptImg" placeholder="https://..." required/>
+                <img id="ptImgPrev" class="img-prev" alt="Preview"/>
               </div>
-              <div class="form-group">
-                <label>Subtitle</label>
-                <input type="text" id="posterSubtitle" placeholder="Short description"/>
+              <div class="fgrp2"><label>Category</label>
+                <select id="ptCat"><option value="web">Web</option><option value="iptv">IPTV</option><option value="yt">YouTube</option><option value="graphics">Graphics</option><option value="video">Video</option><option value="song">Songs</option></select>
+                <label style="margin-top:12px">Price Label</label>
+                <input type="text" id="ptPrice" placeholder="From PKR 5,000"/>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label>Image URL</label>
-                <input type="url" id="posterUrl" placeholder="https://..." required/>
-              </div>
-              <div class="form-group">
-                <label>Price Label</label>
-                <input type="text" id="posterPrice" placeholder="Starting PKR 5,000"/>
-              </div>
-            </div>
-            <button type="submit" class="btn-primary" style="align-self:flex-start;">
-              <i class="fas fa-plus"></i> Add Poster
-            </button>
+            <button type="submit" class="btn-p" style="align-self:flex-start;padding:12px 24px"><i class="fas fa-plus"></i> Add Poster</button>
           </form>
+        </div>
+        <div class="a-card">
+          <div class="a-card-head"><h3>Current Posters</h3></div>
+          <div class="poster-admin-grid" id="posterAdminGrid"><p style="padding:16px;color:var(--gray2)">Loading...</p></div>
         </div>
       </div>
 
-      <!-- ORDERS PAGE -->
-      <div id="page-orders" class="admin-page">
-        <div class="admin-card">
-          <div class="admin-card-header"><h3><i class="fas fa-shopping-cart"></i> All Orders</h3></div>
-          <div style="overflow-x:auto;">
-            <table class="admin-table">
-              <thead>
-                <tr><th>Name</th><th>Phone</th><th>Service</th><th>Status</th><th>Actions</th></tr>
-              </thead>
-              <tbody id="ordersTableBody">
-                <tr><td colspan="5" style="text-align:center;color:var(--gray);padding:30px;">Loading...</td></tr>
-              </tbody>
+      <!-- ORDERS -->
+      <div class="a-page" id="pg-orders">
+        <div class="a-card">
+          <div class="a-card-head"><h3><i class="fas fa-shopping-cart"></i> All Orders</h3></div>
+          <div style="overflow-x:auto">
+            <table class="a-table">
+              <thead><tr><th>Name</th><th>Phone</th><th>Service</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead>
+              <tbody id="ordTbody"><tr><td colspan="6" style="text-align:center;padding:30px;color:var(--gray2)">Loading...</td></tr></tbody>
             </table>
           </div>
         </div>
       </div>
 
-      <!-- CHAT PAGE -->
-      <div id="page-chat" class="admin-page">
-        <div class="admin-card" style="height:auto;">
-          <div class="admin-card-header"><h3><i class="fas fa-comments"></i> Live Chat</h3></div>
-          <div class="admin-chat-layout" style="padding:16px;gap:16px;">
-            <div class="chat-user-list" id="chatUserList">
-              <div style="padding:16px;color:var(--gray);font-size:0.85rem;">Loading chats...</div>
-            </div>
-            <div class="admin-chat-window">
-              <div style="padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.06);font-family:var(--font-display);font-size:0.85rem;font-weight:700;" id="adminChatHeader">Chat Window</div>
-              <div class="admin-chat-messages" id="adminChatMessages">
-                <div style="color:var(--gray);font-size:0.85rem;text-align:center;margin-top:20px;">Left side se user select karein</div>
-              </div>
-              <div class="admin-chat-input">
-                <input type="text" id="adminChatInput" placeholder="Reply type karein..."/>
-                <button id="adminChatSend"><i class="fas fa-paper-plane"></i></button>
+      <!-- CHAT -->
+      <div class="a-page" id="pg-chat">
+        <div class="a-card" style="overflow:hidden">
+          <div class="a-card-head"><h3><i class="fas fa-comments"></i> Live Chat</h3></div>
+          <div class="chat-grid">
+            <div class="chat-users" id="chatUserList"><div style="padding:16px;color:var(--gray2);font-size:.82rem">Loading users...</div></div>
+            <div class="chat-win">
+              <div class="cw-head" id="cwHead">Select a user to chat</div>
+              <div class="cw-msgs" id="cwMsgs"><div style="color:var(--gray);font-size:.82rem;text-align:center;margin-top:20px">Left se user select karein</div></div>
+              <div class="cw-inp">
+                <input type="text" id="cwIn" placeholder="Reply type karein..."/>
+                <button id="cwSend">Send <i class="fas fa-paper-plane"></i></button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-    </main>
-  </div>
-</div>
+    </div><!-- /a-body -->
+  </div><!-- /a-main -->
+</div><!-- /admin-layout -->
+</div><!-- /dashPage -->
 
-<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-<script src="js/firebase-config.js"></script>
-<script src="js/admin.js"></script>
+<script>
+const fbCfg={apiKey:"AIzaSyBbnU8DkthpYQMHOLLyj6M0cc05qXfjMcw",authDomain:"ramadan-2385b.firebaseapp.com",databaseURL:"https://ramadan-2385b-default-rtdb.firebaseio.com",projectId:"ramadan-2385b",storageBucket:"ramadan-2385b.firebasestorage.app",messagingSenderId:"882828936310",appId:"1:882828936310:web:7f97b921031fe130fe4b57"};
+firebase.initializeApp(fbCfg);
+const db=firebase.database(),auth=firebase.auth();
+const R={proj:db.ref('mich/projects'),orders:db.ref('mich/orders'),chat:db.ref('mich/chat'),vis:db.ref('mich/visitors'),posters:db.ref('mich/posters')};
+const ADMIN_PASS='mich2026admin';
+
+// ── LOGIN ──
+document.getElementById('loginForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const pass=document.getElementById('lPass').value,email=document.getElementById('lEmail').value;
+  const btn=e.target.querySelector('button'),err=document.getElementById('loginErr');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i>';btn.disabled=true;
+  auth.signInWithEmailAndPassword(email,pass)
+    .then(showDash)
+    .catch(()=>{
+      if(pass===ADMIN_PASS){showDash();return;}
+      err.textContent='❌ Wrong credentials. Try: mich2026admin';err.style.display='block';
+      btn.innerHTML='<i class="fas fa-sign-in-alt"></i> Login';btn.disabled=false;
+    });
+});
+document.getElementById('logoutBtn').addEventListener('click',()=>{auth.signOut().catch(()=>{});document.getElementById('dashPage').style.display='none';document.getElementById('loginPage').style.display='';});
+
+function showDash(){
+  document.getElementById('loginPage').style.display='none';
+  document.getElementById('dashPage').style.display='block';
+  loadStats();loadProjects();loadOrders();loadPosters();loadChatUsers();
+  R.vis.on('value',s=>{const n=s.numChildren()||0;document.getElementById('liveVis').textContent=n;document.getElementById('stVis').textContent=n;});
+}
+
+// ── NAV ──
+function showPage(id){
+  document.querySelectorAll('.a-page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.a-nav-it').forEach(i=>i.classList.remove('on'));
+  document.getElementById('pg-'+id)?.classList.add('on');
+  document.querySelector(`.a-nav-it[data-p="${id}"]`)?.classList.add('on');
+  const titles={overview:'Overview',projects:'All Projects',add:'Add Project',posters:'Manage Posters',orders:'Orders',chat:'Live Chat'};
+  document.getElementById('pageTitle').textContent=titles[id]||id;
+  if(id==='chat')loadChatUsers();
+}
+window.showPage=showPage;
+document.querySelectorAll('.a-nav-it').forEach(it=>it.addEventListener('click',()=>showPage(it.dataset.p)));
+
+// ── STATS ──
+function loadStats(){
+  R.proj.once('value',s=>document.getElementById('stProj').textContent=s.numChildren());
+  R.orders.once('value',s=>document.getElementById('stOrd').textContent=s.numChildren());
+  R.chat.once('value',s=>document.getElementById('stChat').textContent=s.numChildren());
+}
+
+// ── LOAD PROJECTS ──
+function loadProjects(){
+  R.proj.on('value',snap=>{
+    const tb=document.getElementById('projTbody');tb.innerHTML='';
+    const data=snap.val();
+    if(!data){tb.innerHTML='<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--gray2)">Koi project nahi. Pehle add karo.</td></tr>';return;}
+    Object.entries(data).reverse().forEach(([id,p])=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td>${p.imgUrl?`<img src="${p.imgUrl}" style="width:52px;height:40px;object-fit:cover;border-radius:6px;" loading="lazy" onerror="this.style.display='none'">`:'-'}</td>
+        <td><strong>${p.title}</strong></td>
+        <td><span class="stb st-a">${p.category||'web'}</span></td>
+        <td style="color:var(--y)">${p.price||'-'}</td>
+        <td><button class="btn-del" onclick="delProj('${id}')"><i class="fas fa-trash"></i> Delete</button></td>`;
+      tb.appendChild(tr);
+    });
+  });
+}
+
+// ── ADD PROJECT ──
+document.getElementById('pImg').addEventListener('input',function(){
+  const prev=document.getElementById('pImgPrev');
+  if(this.value){prev.src=this.value;prev.classList.add('show');}else prev.classList.remove('show');
+});
+document.getElementById('addProjForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector('button[type=submit]');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i>';btn.disabled=true;
+  const proj={title:document.getElementById('pTitle').value,category:document.getElementById('pCat').value,description:document.getElementById('pDesc').value,price:document.getElementById('pPrice').value,imgUrl:document.getElementById('pImg').value,wa:document.getElementById('pWa').value||'923001234567',tg:document.getElementById('pTg').value||'michproject',timestamp:Date.now()};
+  try{await R.proj.push(proj);toast('✅ Project add ho gaya!','ok');e.target.reset();document.getElementById('pImgPrev').classList.remove('show');}
+  catch(err){toast('❌ Error: '+err.message,'err');}
+  btn.innerHTML='<i class="fas fa-plus"></i> Add Project';btn.disabled=false;
+  loadStats();
+});
+
+window.delProj=async function(id){
+  if(!confirm('Delete karein?'))return;
+  try{await R.proj.child(id).remove();toast('✅ Deleted!','ok');}
+  catch(e){toast('❌ '+e.message,'err');}
+};
+
+// ── POSTERS ──
+document.getElementById('ptImg').addEventListener('input',function(){
+  const prev=document.getElementById('ptImgPrev');
+  if(this.value){prev.src=this.value;prev.classList.add('show');}else prev.classList.remove('show');
+});
+document.getElementById('addPosterForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const poster={title:document.getElementById('ptTitle').value,subtitle:document.getElementById('ptSub').value,imgUrl:document.getElementById('ptImg').value,category:document.getElementById('ptCat').value,price:document.getElementById('ptPrice').value,timestamp:Date.now()};
+  try{await R.posters.push(poster);toast('✅ Poster add ho gaya!','ok');e.target.reset();document.getElementById('ptImgPrev').classList.remove('show');loadPosters();}
+  catch(err){toast('❌ '+err.message,'err');}
+});
+function loadPosters(){
+  R.posters.on('value',snap=>{
+    const grid=document.getElementById('posterAdminGrid');grid.innerHTML='';
+    const data=snap.val();
+    if(!data){grid.innerHTML='<p style="padding:16px;color:var(--gray2)">Koi poster nahi. Upar se add karo.</p>';return;}
+    Object.entries(data).forEach(([id,p])=>{
+      const card=document.createElement('div');card.className='poster-a-card';
+      card.innerHTML=`
+        ${p.imgUrl?`<img src="${p.imgUrl}" class="poster-a-img" alt="${p.title}" loading="lazy" onerror="this.style.display='none'">`:`<div class="poster-a-img-ph">⭐</div>`}
+        <div class="poster-a-body"><div class="poster-a-title">${p.title}</div><div class="poster-a-price">${p.price||''}</div></div>
+        <button class="poster-a-del" onclick="delPoster('${id}')"><i class="fas fa-times"></i></button>`;
+      grid.appendChild(card);
+    });
+  });
+}
+window.delPoster=async function(id){
+  if(!confirm('Delete poster?'))return;
+  try{await R.posters.child(id).remove();toast('✅ Poster deleted!','ok');}catch(e){toast('❌ '+e.message,'err');}
+};
+
+// ── ORDERS ──
+function loadOrders(){
+  R.orders.on('value',snap=>{
+    const tb=document.getElementById('ordTbody');tb.innerHTML='';
+    const data=snap.val();
+    if(!data){tb.innerHTML='<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--gray2)">Koi order nahi.</td></tr>';return;}
+    Object.entries(data).reverse().forEach(([id,o])=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td><strong>${o.name||'-'}</strong></td><td>${o.phone||'-'}</td><td>${o.service||'-'}</td>
+        <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${o.message||'-'}</td>
+        <td><span class="stb st-${o.status==='active'?'a':o.status==='done'?'d':'p'}">${o.status||'pending'}</span></td>
+        <td>
+          <button class="btn-act" onclick="updOrd('${id}','active')">Active</button>
+          <button class="btn-act" style="color:var(--p);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)" onclick="updOrd('${id}','done')">Done</button>
+          <button class="btn-del" onclick="delOrd('${id}')"><i class="fas fa-trash"></i></button>
+        </td>`;
+      tb.appendChild(tr);
+    });
+  });
+}
+window.updOrd=async(id,status)=>{try{await R.orders.child(id).update({status});toast('✅ Updated!','ok');}catch(e){toast('❌ '+e.message,'err');}};
+window.delOrd=async id=>{if(!confirm('Delete?'))return;try{await R.orders.child(id).remove();toast('✅ Deleted!','ok');}catch(e){toast('❌ '+e.message,'err');}};
+
+// ── CHAT ──
+let activeUid=null;
+function loadChatUsers(){
+  R.chat.on('value',snap=>{
+    const list=document.getElementById('chatUserList');list.innerHTML='';
+    const data=snap.val();
+    if(!data){list.innerHTML='<div style="padding:16px;color:var(--gray2);font-size:.82rem">Koi chat user nahi.</div>';return;}
+    Object.entries(data).forEach(([uid,u])=>{
+      const msgs=Object.values(u.messages||{});
+      const last=msgs[msgs.length-1];
+      const unread=msgs.filter(m=>m.sender==='user'&&!m.read).length;
+      const div=document.createElement('div');div.className='cu-item'+(uid===activeUid?' on':'');
+      div.innerHTML=`<div class="cu-avatar">${uid.slice(-4,uid.length-2).toUpperCase()}</div><div style="flex:1;min-width:0"><div class="cu-name">User ${uid.slice(-5)}</div><div class="cu-prev">${last?.text||'...'}</div></div>${unread?`<div class="cu-badge">${unread}</div>`:''}`;
+      div.onclick=()=>openChat(uid);
+      list.appendChild(div);
+    });
+  });
+}
+function openChat(uid){
+  activeUid=uid;
+  document.getElementById('cwHead').textContent='User: '+uid.slice(-8);
+  db.ref('mich/chat/'+uid+'/messages').on('value',snap=>{
+    const msgs=document.getElementById('cwMsgs');msgs.innerHTML='';
+    const data=snap.val();if(!data)return;
+    Object.values(data).forEach(m=>{
+      const d=document.createElement('div');d.className='cmsg '+(m.sender==='user'?'u':'a');d.textContent=m.text;msgs.appendChild(d);
+    });msgs.scrollTop=msgs.scrollHeight;
+  });
+}
+document.getElementById('cwSend').addEventListener('click',sendAdminMsg);
+document.getElementById('cwIn').addEventListener('keydown',e=>{if(e.key==='Enter')sendAdminMsg();});
+async function sendAdminMsg(){
+  if(!activeUid)return;const t=document.getElementById('cwIn').value.trim();if(!t)return;
+  document.getElementById('cwIn').value='';
+  try{await db.ref('mich/chat/'+activeUid+'/messages').push({text:t,sender:'admin',time:Date.now()});}catch(e){}
+}
+
+// ── TOAST ──
+function toast(msg,type){
+  const t=document.createElement('div');t.className='toast '+type;t.textContent=msg;
+  document.body.appendChild(t);setTimeout(()=>t.remove(),3500);
+}
+window.toast=toast;
+</script>
 </body>
 </html>
